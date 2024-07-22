@@ -17,7 +17,7 @@ export function extractPrice(...elements: any) {
 
     if(priceText) {
       const cleanPrice = priceText.replace(/[^\d.]/g, '');
-
+      // console.log(cleanPrice)
       let firstPrice; 
 
       if (cleanPrice) {
