@@ -6,6 +6,7 @@ import { scrapeAmazonProduct } from "../scraper";
 import { connectToDB } from "../scraper/mongoose";
 import { getLowestPrice } from "../utils";
 import { generateEmailBody, sendEmail } from "../nodemailer";
+import { User } from "@/types";
 
 export async function scrapeAndStoreProduct(productUrl : string) {
     if(!productUrl) return;
@@ -33,7 +34,7 @@ export async function scrapeAndStoreProduct(productUrl : string) {
                 ...scrapedProduct,
                 priceHistory : updatedPriceHistory,
                 lowestPrice : getLowestPrice(updatedPriceHistory),
-                heightPrice : getLowestPrice(updatedPriceHistory),
+                highestPrice : getLowestPrice(updatedPriceHistory),
                 averagePrice : getLowestPrice(updatedPriceHistory),
 
             }
@@ -105,7 +106,7 @@ export async function getAllProducts() {
 
         if(!product) return;
 
-        const userExists = product.users.some((user:User) => user.email === userEmail)
+        const userExists = product.users.some((user : User) => user.email === userEmail)
 
         if(!userExists){
             product.users.push({email:userEmail});

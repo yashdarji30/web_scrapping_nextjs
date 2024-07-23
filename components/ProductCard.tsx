@@ -29,13 +29,14 @@ const ProductCard = ({product} : Props) => {
           <p className="text-black opacity-50 text-lg capitalize">
             {product.category}
           </p>
+          </div>
 
           <p className="text-black text-lg font-semibold">
             <span>{product?.currency}</span>
             <span>{product?.currentPrice}</span>
           </p>
         </div>
-      </div>
+      
     </Link>
   )
 }
