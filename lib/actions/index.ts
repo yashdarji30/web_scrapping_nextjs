@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import Product from "../models/product.model";
 import { scrapeAmazonProduct } from "../scraper";
 import { connectToDB } from "../scraper/mongoose";
-import { getLowestPrice } from "../utils";
+import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
 import { generateEmailBody, sendEmail } from "../nodemailer";
 import { User } from "@/types";
 
@@ -34,8 +34,8 @@ export async function scrapeAndStoreProduct(productUrl : string) {
                 ...scrapedProduct,
                 priceHistory : updatedPriceHistory,
                 lowestPrice : getLowestPrice(updatedPriceHistory),
-                highestPrice : getLowestPrice(updatedPriceHistory),
-                averagePrice : getLowestPrice(updatedPriceHistory),
+                highestPrice : getHighestPrice(updatedPriceHistory),
+                averagePrice : getAveragePrice(updatedPriceHistory),
 
             }
         }

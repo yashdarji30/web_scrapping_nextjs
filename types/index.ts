@@ -15,9 +15,9 @@ export type PriceHistoryItem = {
     currentPrice: number;
     originalPrice: number;
     priceHistory: PriceHistoryItem[] | [];
+    averagePrice: number;
     highestPrice: number;
     lowestPrice: number;
-    averagePrice: number;
     discountRate: number;
     description: string;
     category: string;
