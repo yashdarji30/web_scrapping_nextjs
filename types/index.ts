@@ -2,14 +2,6 @@ export type PriceHistoryItem = {
   price: number;
 };
 
-export type DescriptionItem = {
-  descriptionItem: string;
-};
-
-export type CategoryItem = {
-  categoryItem: string;
-};
-
 export type User = {
   email: string;
 };
@@ -27,13 +19,12 @@ export type Product = {
   lowestPrice: number;
   averagePrice: number;
   discountRate: number;
-  description: DescriptionItem[] | [];
-  category: CategoryItem[] | [];
+  description: string;
+  category: string;
   reviewsCount: number;
-  stars: string;
+  stars: number;
   isOutOfStock: Boolean;
   users?: User[];
-  boughtThisMonth: string;
 };
 
 export type NotificationType =
@@ -50,5 +41,4 @@ export type EmailContent = {
 export type EmailProductInfo = {
   title: string;
   url: string;
-  image: string;
 };

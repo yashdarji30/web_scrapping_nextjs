@@ -1,22 +1,24 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-let isConnected = false; // variable to track the connection status
+let isConnected = false;
 
-export const connectToDB = async () =>{
-    mongoose.set("strictQuery", true);
+export const connectToDB = async () => {
+  mongoose.set('strictQuery', true);
 
-    if(!process.env.MONGOOSE_URI) return console.log("MONGOOSE_URI is not deffined");
+  if (!process.env.MONGODB_URI) {
+    console.log('MongoDB URI not found');
+  }
 
-    if(isConnected) return console.log("=> using existing database connection");
+  if (isConnected) {
+    return console.log('=> using existing database connection');
+  }
 
-    try{
-        await mongoose.connect(process.env.MONGOOSE_URI);
-        isConnected = true;
+  try {
+    await mongoose.connect(String(process.env.MONGODB_URI));
+    isConnected = true;
+    console.log('=> new database connection');
+  } catch (error) {
+    console.log('=> error connecting to database:', error);
+  }
 
-        console.log('MongoDB connected');
-
-    }catch(error){
-        console.log(error);
-
-    }
 }
