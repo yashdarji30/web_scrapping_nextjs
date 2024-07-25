@@ -43,7 +43,6 @@ const Home = async () => {
 
         <div className="flex flex-wrap gap-x-8 gap-y-16">
           {allProducts?.map((product) => (
-            // <div>{product.title}</div>
             <ProductCard key={product._id} product={product} />
           ))}
         </div>

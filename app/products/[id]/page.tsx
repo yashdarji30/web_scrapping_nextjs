@@ -1,6 +1,5 @@
-
 import Modal from "@/components/Modal";
-import PriceinfoCard from "@/components/PriceinfoCard";
+import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
 import { getProductById, getSimilarProducts } from "@/lib/actions"
 import { formatNumber } from "@/lib/utils";
@@ -129,29 +128,25 @@ const ProductDetails = async ({ params: { id } }: Props) => {
 
           <div className="my-7 flex flex-col gap-5">
             <div className="flex gap-5 flex-wrap">
-              <PriceinfoCard 
+              <PriceInfoCard 
                 title="Current Price"
                 iconSrc="/assets/icons/price-tag.svg"
                 value={`${product.currency} ${formatNumber(product.currentPrice)}`}
-                borderColor="green"
               />
-              <PriceinfoCard
+              <PriceInfoCard 
                 title="Average Price"
                 iconSrc="/assets/icons/chart.svg"
                 value={`${product.currency} ${formatNumber(product.averagePrice)}`}
-                borderColor="orange"
               />
-              <PriceinfoCard 
+              <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
                 value={`${product.currency} ${formatNumber(product.highestPrice)}`}
-                borderColor="red"
               />
-              <PriceinfoCard 
+              <PriceInfoCard 
                 title="Lowest Price"
                 iconSrc="/assets/icons/arrow-down.svg"
                 value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
-                borderColor="blue"
               />
             </div>
           </div>
